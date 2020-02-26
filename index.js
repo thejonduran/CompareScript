@@ -22,7 +22,7 @@ function compareData(file1, file2) {
 	return new Promise(function(resolve) {
 		var found = []
 		for (var i = 0; i < file1.length; i++) {
-			console.log("Checking: " + file1[i])
+			//console.log("Checking: " + file1[i])
 			if (file2.includes(file1[i]) === params.includes) {
 				found.push(file1[i])
 			}
@@ -38,16 +38,21 @@ function writeToFile(array) {
 			file += array[i] + "\n"
 		}
 		fs.writeFileSync("./results.txt", file, "utf8")
-		resolve(console.log(file))
+		resolve()
 	})
 }
 
 async function runScript(){
 	var data1 = await getData(params.mainFile)
+	console.log("Got Data1...")
 	var data2 = await getData(params.secondaryFile)
+	console.log("Got Data2...")
 	var results = await compareData(data1,data2)
+	console.log("Compared Data...")
 	await writeToFile(results)
+	console.log("Wrote File...")
 	console.log(results)
+	console.log("Done.")
 }
 
 runScript()
