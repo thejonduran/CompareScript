@@ -1,4 +1,4 @@
-var {runScript} = require("./data")
+var {runScript} = require("./process")
 
 runScript({
 
@@ -6,6 +6,8 @@ runScript({
 	delim1: "\n",
 	file2: "./data1.txt",
 	delim2: "\n",
-	includes: true
+	includes: false
+	//true for similarity
+	//false for difference
 
 })
